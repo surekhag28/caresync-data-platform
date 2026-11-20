@@ -102,6 +102,8 @@ Databricks Genie (natural-language)  GitHub (ADF + Databricks code), Unity Catal
 
 Sample CSV files for an **initial** and an **incremental** load are in [`data/`](data/).
 
+> All data in this project is **synthetic** (generated for learning purposes). No real patient information is used.
+
 ---
 
 ## 5. Metadata-driven framework
@@ -189,20 +191,21 @@ The silver-to-gold logic is specified in a **Source-to-Target Mapping** workbook
 
 ## 9. Dashboards
 
-A 4-page **Databricks AI/BI dashboard** (“CareSync Executive Dashboard”) is built on the gold tables. Click a snapshot to open it full size. PDF exports are in [`docs/dashboards/`](docs/dashboards/).
+A 4-page **Databricks AI/BI dashboard** (“CareSync Executive Dashboard”) is built on the gold tables.
+GitHub cannot display PDFs inside a README, so each page is shown as a PNG snapshot of its PDF export. Click a snapshot to open it full size, or click **PDF** to open the original export.
 
 <table>
   <tr>
-    <td align="center" width="50%"><b>Page 1 – Executive Overview</b><br>
+    <td align="center" width="50%"><b>Page 1 – Executive Overview</b> · <a href="docs/dashboards/01_executive_overview.pdf">PDF</a><br>
       <a href="docs/dashboards/01_executive_overview.png"><img src="docs/dashboards/01_executive_overview.png" width="400" alt="Executive Overview"></a></td>
-    <td align="center" width="50%"><b>Page 2 – Hospital Performance</b><br>
+    <td align="center" width="50%"><b>Page 2 – Hospital Performance</b> · <a href="docs/dashboards/02_hospital_performance.pdf">PDF</a><br>
       <a href="docs/dashboards/02_hospital_performance.png"><img src="docs/dashboards/02_hospital_performance.png" width="400" alt="Hospital Performance"></a></td>
   </tr>
   <tr>
-    <td align="center" width="50%"><b>Page 3 – Lab Test Insights</b><br>
+    <td align="center" width="50%"><b>Page 3 – Lab Test Insights</b> · <a href="docs/dashboards/03_lab_test_insights.pdf">PDF</a><br>
       <a href="docs/dashboards/03_lab_test_insights.png"><img src="docs/dashboards/03_lab_test_insights.png" width="400" alt="Lab Test Insights"></a></td>
-    <td align="center" width="50%"><b>Page 4</b><br>
-      <a href="docs/dashboards/04_page_4.png"><img src="docs/dashboards/04_page_4.png" width="400" alt="Dashboard page 4"></a></td>
+    <td align="center" width="50%"><b>Page 4 – Patient Population and Risk</b> · <a href="docs/dashboards/04_patient_population_and_risk.pdf">PDF</a><br>
+      <a href="docs/dashboards/04_patient_population_and_risk.png"><img src="docs/dashboards/04_patient_population_and_risk.png" width="400" alt="Patient Population and Risk"></a></td>
   </tr>
 </table>
 
@@ -211,7 +214,7 @@ A 4-page **Databricks AI/BI dashboard** (“CareSync Executive Dashboard”) is 
 | **1. Executive Overview** | Network KPIs: **33k lab tests, 5k patients, 50 hospitals, 22.2% abnormal rate, 8.3% critical rate, 13.2% of patients with a critical result**. Monthly test volume vs abnormal rate, patient risk mix (Normal / Elevated / High Risk), top 10 hospitals by volume, abnormal and critical rate by lab test. | Executives |
 | **2. Hospital Performance** | Hospital and date filters. Avg tests per hospital-day, avg active doctors per day, abnormal and critical results. Weekly tests vs critical results, volume and critical rate by hospital (vs network average), day-of-week and weekday vs weekend patterns, **hospital scorecard**. | Hospital and operations managers |
 | **3. Lab Test Insights** | Lab test and month filters. Test mix, abnormal vs critical results by test, monthly abnormal rate by test, monthly volume by test type, **critical-rate heatmap** (test × quarter). | Lab and clinical quality teams |
-| **4. Page 4** | _Add a one-line description of page 4._ | _Add the audience._ |
+| **4. Patient Population and Risk** | Insurer and hospital filters. KPIs: **5k patients, average age 42.1, 6.6 tests per patient, 661 high-risk patients**. Risk mix by age band, patients by state (map), high-risk share by insurance provider (vs average), abnormal rate by age band and gender, and a **high-risk patient watchlist** for follow-up. | Care teams and insurance / finance teams |
 
 ### Genie
 A **Databricks Genie** space on the gold tables lets business users ask questions in plain English, e.g. *“Which 5 hospitals had the highest critical rate last quarter?”*
@@ -258,7 +261,11 @@ caresync-data-platform/
 │   └── incremental_load/      # second CSV drop for incremental testing
 ├── docs/
 │   ├── caresync_architecture.png
-│   ├── dashboards/            # dashboard exports (PDF / PNG)
+│   ├── dashboards/            # 4 dashboard pages: PDF exports + PNG snapshots
+│   │   ├── 01_executive_overview.pdf / .png
+│   │   ├── 02_hospital_performance.pdf / .png
+│   │   ├── 03_lab_test_insights.pdf / .png
+│   │   └── 04_patient_population_and_risk.pdf / .png
 │   └── gold_sttm/
 │       └── sttm_silver_to_gold.xlsx
 └── sql/
